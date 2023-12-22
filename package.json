@@ -1,0 +1,47 @@
+{
+  "name": "@keepix/wallets-massa",
+  "version": "0.0.1",
+  "description": "Wallets Massa library",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keepix-labs/keepix-wallets-massa.git"
+  },
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs && npm run types",
+    "test": "jest",
+    "test-gui": "npx majestic",
+    "types": "tsc --declaration --emitDeclarationOnly",
+    "deploy": "npm publish --access public"
+  },
+  "author": "jguyet@keepix.io",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-typescript": "^11.1.3",
+    "@types/debug": "^4.1.7",
+    "@types/jest": "^29.0.3",
+    "@types/node": "^20.5.7",
+    "debug": "^4.3.2",
+    "jest": "^29.0.3",
+    "jest-websocket-mock": "^2.2.1",
+    "keepix-tokens": "^0.0.20",
+    "prettier": "^3.0.3",
+    "rollup": "^4.1.5",
+    "ts-jest": "^29.0.1",
+    "ts-node-dev": "^2.0.0",
+    "tslib": "^2.3.1",
+    "typescript": "^5.0.3"
+  },
+  "keywords": [
+    "massa",
+    "ethereum"
+  ],
+  "dependencies": {
+    "@massalabs/massa-web3": "^2.2.7",
+    "bignumber.js": "^9.1.2",
+    "bip39-light": "^1.0.7"
+  }
+}
