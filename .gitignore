@@ -9,7 +9,6 @@ coverage/
 # Node artifact files
 dist/
 node_modules/
-lib/
 
 # Compiled Java class files
 *.class
