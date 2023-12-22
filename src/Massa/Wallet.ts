@@ -85,7 +85,7 @@ export class Wallet {
       && keepixTokens.coins[type].rpcs != undefined) {
         this.rpc = keepixTokens.coins[type].rpcs[Math.floor(Math.random()*keepixTokens.coins[type].rpcs.length)].url;
     }
-    if (rpc !== undefined) {
+    if (rpc !== undefined && rpc.url !== '') {
       this.rpc = rpc.url;
     }
 
