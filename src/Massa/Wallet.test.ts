@@ -10,7 +10,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       password: 'toto',
     })
 
@@ -23,7 +23,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       mnemonic,
     })
 
@@ -36,7 +36,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       privateKey,
     })
 
@@ -49,7 +49,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
     })
 
     expect(wallet.getAddress()).toBeDefined()
@@ -61,12 +61,12 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       privateKey,
     })
     expect(
       await wallet.getCoinBalance(
-        'AU1dADjCGvDFoUeDAchFHCoACNpeceHoxujZmVn3h15FmQSPznrL',
+        'AU1dADjCGvDFoUeDAchFHCoACNpeceHoxujZmVn3h15FmQSPznrL'
       ),
     ).toEqual('0')
   })
@@ -75,7 +75,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       privateKey,
     })
 
@@ -91,7 +91,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       privateKey,
     })
     const estimationResult = await wallet.sendCoinTo(
@@ -106,7 +106,7 @@ describe('basic wallet', () => {
     const wallet = new Wallet()
     await wallet.init({
       type: 'massa',
-      rpc: 'https://buildnet.massa.net/api/v2',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
       privateKey,
     })
 

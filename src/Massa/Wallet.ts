@@ -79,16 +79,25 @@ export class Wallet {
   }) {
     this.type = type
     this.keepixTokens = keepixTokens
-    this.rpc = rpc
+
+    // select one random RPC or override
+    if (keepixTokens != undefined
+      && keepixTokens.coins[type] !== undefined
+      && keepixTokens.coins[type].rpcs != undefined) {
+        this.rpc = keepixTokens.coins[type].rpcs[Math.floor(Math.random()*keepixTokens.coins[type].rpcs.length)].url;
+    }
+    if (rpc !== undefined && rpc.url !== '') {
+      this.rpc = rpc.url;
+    }
 
     const providers = [
       {
         type: ProviderType.PUBLIC,
-        url: rpc,
+        url: this.rpc,
       } as IProvider,
       {
         type: ProviderType.PRIVATE,
-        url: rpc,
+        url: this.rpc,
       } as IProvider,
     ]
 
