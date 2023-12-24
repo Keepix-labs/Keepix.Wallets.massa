@@ -78,6 +78,7 @@ describe('basic wallet', () => {
       rpc: 'https://buildnet.massa.net/api/v2',
       privateKey,
     })
+
     expect(
       await wallet.getTokenBalance(
         'AS12WuMr6jLBy6xgPLSBZaypHC9BXtYBFG2Ys6fPQcEYTMBhSzofC',

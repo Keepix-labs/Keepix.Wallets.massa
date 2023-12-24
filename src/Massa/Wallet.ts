@@ -10,6 +10,7 @@ import {
   Args,
   bytesToU256,
   fromMAS,
+  bytesToStr,
 } from '@massalabs/massa-web3'
 import { entropyToMnemonic, mnemonicToSeed } from 'bip39-light'
 import crypto from 'crypto'
@@ -168,6 +169,39 @@ export class Wallet {
 
   public getConnectedWallet = () => {
     return this.wallet
+  }
+
+  public async getTokenInformation(tokenAddress: string) {
+    if (!this.wallet || !this.account) throw new Error('Not initialized')
+    try {
+      const name = await this.wallet.smartContracts().readSmartContract({
+        targetAddress: tokenAddress,
+        targetFunction: 'name',
+        parameter: new Args(),
+        maxGas: 100000000n,
+      })
+      const symbol = await this.wallet.smartContracts().readSmartContract({
+        targetAddress: tokenAddress,
+        targetFunction: 'symbol',
+        parameter: new Args(),
+        maxGas: 100000000n,
+      })
+      const decimals = await this.wallet.smartContracts().readSmartContract({
+        targetAddress: tokenAddress,
+        targetFunction: 'decimals',
+        parameter: new Args(),
+        maxGas: 100000000n,
+      })
+
+      return {
+        name: bytesToStr(name.returnValue),
+        symbol: bytesToStr(symbol.returnValue),
+        decimals: decimals.returnValue[0],
+      }
+    } catch (err) {
+      console.log(err)
+      return undefined
+    }
   }
 
   // always display the balance in 0 decimals like 1.01 MASSA
