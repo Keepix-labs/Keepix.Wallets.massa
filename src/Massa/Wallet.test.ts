@@ -57,6 +57,21 @@ describe('basic wallet', () => {
     expect(wallet.getMnemonic()).toBeDefined()
   })
 
+  it('can getTokenInformation', async () => {
+    const wallet = new Wallet()
+    await wallet.init({
+      type: 'massa',
+      rpc: { url: 'https://buildnet.massa.net/api/v2' },
+      privateKey,
+    })
+
+    expect(
+      await wallet.getTokenInformation(
+        'AS12WuMr6jLBy6xgPLSBZaypHC9BXtYBFG2Ys6fPQcEYTMBhSzofC',
+      ),
+    ).toEqual({ name: 'USD Coin', symbol: 'USDC', decimals: 6 })
+  })
+
   it('can getBalance', async () => {
     const wallet = new Wallet()
     await wallet.init({
@@ -66,7 +81,7 @@ describe('basic wallet', () => {
     })
     expect(
       await wallet.getCoinBalance(
-        'AU1dADjCGvDFoUeDAchFHCoACNpeceHoxujZmVn3h15FmQSPznrL'
+        'AU1dADjCGvDFoUeDAchFHCoACNpeceHoxujZmVn3h15FmQSPznrL',
       ),
     ).toEqual('0')
   })
